@@ -35,4 +35,18 @@ else
     VER=$(uname -r)
 fi
 
-./"${OS}.sh"
+# Check if the variable is set and not empty
+if [ -n "$OS" ]; then
+    
+    # Construct the file path
+    SCRIPT_PATH="./${OS}.sh"
+
+    # Check if it is a regular file (does not need executable flag)
+    if [ -f "$SCRIPT_PATH" ]; then
+        # Execute the script via sh
+        sh "$SCRIPT_PATH"
+    else
+        # Print specific message if the file is missing
+        echo "no file for $OS"
+    fi
+fi
