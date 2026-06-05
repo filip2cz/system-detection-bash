@@ -35,3 +35,4 @@ else
     VER=$(uname -r)
 fi
 
+./"${OS}.sh"
