@@ -45,7 +45,7 @@ if [ -n "$OS" ]; then
     # Check if it is a regular file (does not need executable flag)
     if [ -f "$SCRIPT_PATH" ]; then
         # Execute the script via sh
-        sh "$SCRIPT_PATH"
+        source "$SCRIPT_PATH"
     else
         # Print specific message if the file is missing
         echo "no file for $OS"
