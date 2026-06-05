@@ -12,18 +12,26 @@ elif [ -f /etc/lsb-release ]; then
     . /etc/lsb-release
     OS=$DISTRIB_ID
     VER=$DISTRIB_RELEASE
+elif [ -d /Haiku ]; then
+	# Haiku OS
+	OS="Haiku"
+elif [ $(ps -ef|grep -c com.termux ) -gt 0 ]; then
+    # termux detection https://www.reddit.com/r/termux/comments/co46qw/how_to_detect_in_a_bash_script_that_im_in_termux/
+    OS="termux"
+    VER="unknown"
 elif [ -f /etc/debian_version ]; then
     # Older Debian/Ubuntu/etc.
     OS=Debian
     VER=$(cat /etc/debian_version)
 elif [ -f /etc/SuSe-release ]; then
     # Older SuSE/etc.
-    ...
+    echo doplň 1
 elif [ -f /etc/redhat-release ]; then
     # Older Red Hat, CentOS, etc.
-    ...
+    echo doplň 2
 else
     # Fall back to uname, e.g. "Linux <version>", also works for BSD, etc.
     OS=$(uname -s)
     VER=$(uname -r)
 fi
+
